@@ -328,22 +328,26 @@ def gerar_pdf(funcionario):
     p.drawString(rect_x + 25, rect_y + 750 + 20, f"__________________________________")
     p.drawString(rect_x + 25, rect_y + 750 + 25, f"{funcionario.nome}")
     p.drawImage(logo_path, 210, 630, width=logo_width, height=logo_height)
-    p.drawString(rect_x, 522, f"_____________________________________________________________________________________________")
-    p.drawString(rect_x, 431, f"_____________________________________________________________________________________________")
+    p.drawString(rect_x, 522, f"_________________________________________________________________________________________________")
+    p.drawString(rect_x, 431, f"_________________________________________________________________________________________________")
     
     
-    
+
+    p.drawString(rect_x + 275, 400, f"-------")
+    p.drawString(rect_x + 325, 400, f"-------")
+    p.drawString(rect_x + 400, 400, f"-------")
+
     draw_centered_text(p, 590, f"COMPROVANTE PAGAMENTO - COMPETÊNCIA: {funcionario.comp}", fontsize=12, fontstyle="bold")
     draw_centered_text(p, 565, f"FOLHA/RCT", fontsize=12, fontstyle="bold")
 
     p.setFont("Helvetica-Bold", 10)
     p.drawString(rect_x + 10, 525, f"Dados Consultados")
     p.drawString(rect_x + 10, 416, f"Autenticação")
-    p.drawString(rect_x + 80, 416, f"Data")
-    p.drawString(rect_x + 120, 416, f"Banco")
-    p.drawString(rect_x + 160, 416, f"Agência")
-    p.drawString(rect_x + 200, 416, f"Conta")
-    p.drawString(rect_x + 240, 416, f"Valor R$")
+    p.drawString(rect_x + 200, 416, f"Data")
+    p.drawString(rect_x + 275, 416, f"Banco")
+    p.drawString(rect_x + 325, 416, f"Agência")
+    p.drawString(rect_x + 400, 416, f"Conta")
+    p.drawString(rect_x + 475, 416, f"Valor R$")
 
 
     p.setFont("Helvetica", 8)
@@ -357,7 +361,9 @@ def gerar_pdf(funcionario):
     p.drawString(rect_x + 10 + 80, 470, f"PAG DIVERS DOC – CREDITO CONTA SALÁRIO")
     p.drawString(rect_x + 10 + 80, 455, f"PROCESSADO - EFETUADO")
     p.drawString(rect_x + 10 + 80, 440, f"{funcionario.matricula} - {funcionario.nome}")
-
+    p.drawString(rect_x + 10, 400, f"G331081341857981023 08.02.2022 13.50.39_")
+    p.drawString(rect_x + 200, 400, f"07.02.2022")
+    p.drawString(rect_x + 475, 400, f"R$ 858.00")
 
 
 
