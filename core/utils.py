@@ -100,65 +100,21 @@ def gerar_pdf(funcionario):
     rect_height = 80
     p.roundRect(rect_x, rect_y + 750, table_width, rect_height, 1, stroke=1, fill=0)
     p.setFont("Helvetica", 8)
-
-    p.setFont("Helvetica", 8)
     p.drawString(rect_x + 10, rect_y + 750 + 65, f"Empresa: GOIAS BUSINESS CONSULTORIA E SERVIÇOS LTDA")
-
-
-    p.setFont("Helvetica", 8)
     p.drawString(rect_x + 10, rect_y + 750 + 50, f"Cliente: EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS ")
-
-
-
-
-    p.setFont("Helvetica", 8)
     p.drawString(rect_x + 400, rect_y + 750 + 65, f"Inscrição:   18.507.752/0001-55")
-
-    p.setFont("Helvetica", 8)
     p.drawString(rect_x + 400, rect_y + 750 + 50, f"Inscrição:   34.028.316/0015-09")
-
-
-
-
-    p.setFont("Helvetica", 8)
     p.drawString(rect_x + 10, rect_y + 750 + 35, f"Código:")
-
-    p.setFont("Helvetica", 8)
     p.drawString(rect_x + 10, rect_y + 750 + 20, f"{funcionario.matricula}")
-
-
-    p.setFont("Helvetica", 8)
-    p.drawString(rect_x + 80, rect_y + 750 + 35, f"Nome do Funcionário:")
-
-    p.setFont("Helvetica", 8)
-    p.drawString(rect_x + 80, rect_y + 750 + 20, f"{funcionario.nome}")
-
-
-    p.setFont("Helvetica", 8)
-    p.drawString(rect_x + 220, rect_y + 750 + 35, f"Função:")
-
-    p.setFont("Helvetica", 8)
-    p.drawString(rect_x + 220, rect_y + 750 + 20, f"{funcionario.cargo}")
-
-
-    p.setFont("Helvetica", 8)
-    p.drawString(rect_x + 320, rect_y + 750 + 35, f"Admissão:")
-
-    p.setFont("Helvetica", 8)
-    p.drawString(rect_x + 320, rect_y + 750 + 20, f"20.11.2021")
-
-
-    p.setFont("Helvetica", 8)
+    p.drawString(rect_x + 50, rect_y + 750 + 35, f"Nome do Funcionário:")
+    p.drawString(rect_x + 50, rect_y + 750 + 20, f"{funcionario.nome}")
+    p.drawString(rect_x + 210, rect_y + 750 + 35, f"Função:")
+    p.drawString(rect_x + 210, rect_y + 750 + 20, f"{funcionario.cargo}")
+    p.drawString(rect_x + 345, rect_y + 750 + 35, f"Admissão:")
+    p.drawString(rect_x + 345, rect_y + 750 + 20, f"20.11.2021")
     p.drawString(rect_x + 400, rect_y + 750 + 35, f"Demissão:")
-
-    p.setFont("Helvetica", 8)
     p.drawString(rect_x + 400, rect_y + 750 + 20, f" __.__.____ ")
-
-
-    p.setFont("Helvetica", 8)
     p.drawString(rect_x + 480, rect_y + 750 + 35, f"Competência:")
-
-    p.setFont("Helvetica", 8)
     p.drawString(rect_x + 480, rect_y + 750 + 20, f"{funcionario.comp}")
 
 
@@ -259,8 +215,154 @@ def gerar_pdf(funcionario):
 
 
 
-    # Finalizar a segunda página
+    # Finalizar a segunda página e começa a 3°.
     p.showPage()
+
+
+
+########################################################################################################
+
+#  QUADRO FINAL DO CONTRA CHEQUE.
+
+########################################################################################################
+
+
+
+
+#################################
+
+# QUADRADO GRANDE
+
+#################################
+
+
+
+    # Defina a largura da tabela
+    table_width = 550
+    # Desenhar um retângulo com informações do funcionário acima da tabela
+    rect_x = (letter[0] - table_width) / 2
+    # Aqui mexe na altura de onde fica na pagina.
+    rect_y = -44
+    # Altura do retangulo
+    rect_height = 120
+    p.roundRect(rect_x, rect_y + 750, table_width, rect_height, 1, stroke=1, fill=0)
+
+
+
+#################################
+
+# QUADRADO DE BAIXO PARA ASSINATURA
+
+#################################
+
+    table_width2 = 550
+    # Desenhar um retângulo com informações do funcionário acima da tabela
+    rect_x2 = (letter[0] - table_width) / 2
+    # Aqui mexe na altura de onde fica na pagina.
+    rect_y2 = -44
+    # Altura do retangulo
+    rect_height2 = 40
+    p.roundRect(rect_x2, rect_y2 + 750, table_width2, rect_height2, 1, stroke=1, fill=0)
+
+
+#################################
+
+# QUADRADO GRANDE PARA A DIREITA
+
+#################################
+
+    table_width3 = 275
+    # Mexe onde ele fica visando lado
+    rect_x3 = 306
+    # Aqui mexe na altura de onde fica na pagina.
+    rect_y3 = -4
+    # Altura do retangulo
+    rect_height3 = 80
+    p.roundRect(rect_x3, rect_y3 + 750, table_width3, rect_height3, 0, stroke=1, fill=0)
+
+
+#################################
+
+# LINHA NA DIREITA GRANDE PARA A DIREITA
+
+#################################
+
+    table_width3 = 275
+    # Mexe onde ele fica visando lado
+    rect_x3 = 306
+    # Aqui mexe na altura de onde fica na pagina.
+    rect_y3 = -4
+    # Altura do retangulo
+    rect_height3 = 30
+    p.roundRect(rect_x3, rect_y3 + 750, table_width3, rect_height3, 0, stroke=1, fill=0)
+
+
+#################################
+
+# LINHA NA DIREITA GRANDE PARA A DIREITA
+
+#################################
+
+    table_width3 = 137.5
+    # Mexe onde ele fica visando lado
+    rect_x3 = 306
+    # Aqui mexe na altura de onde fica na pagina.
+    rect_y3 = 26
+    # Altura do retangulo
+    rect_height3 = 50
+    p.roundRect(rect_x3, rect_y3 + 750, table_width3, rect_height3, 0, stroke=1, fill=0)
+
+
+
+
+
+
+
+########################################################################################################
+    p.setFont("Helvetica", 10)
+    p.drawString(rect_x + 300, rect_y + 750 + 105, f"Total Vencimentos:")
+    p.drawString(rect_x + 325, rect_y + 750 + 85, f"R$ 1.111.18")
+    p.drawString(rect_x + 445, rect_y + 750 + 105, f"Total Descontos:")
+    p.drawString(rect_x + 470, rect_y + 750 + 85, f"R$ 253.18")
+    p.drawString(rect_x + 350, rect_y + 750 + 50, f"Valor Líquido ==== R$ 858.00")
+    p.drawString(rect_x + 25, rect_y + 750 + 20, f"__________________________________")
+    p.drawString(rect_x + 25, rect_y + 750 + 25, f"{funcionario.nome}")
+    p.drawImage(logo_path, 210, 630, width=logo_width, height=logo_height)
+    p.drawString(rect_x, 522, f"_____________________________________________________________________________________________")
+    p.drawString(rect_x, 431, f"_____________________________________________________________________________________________")
+    
+    
+    
+    draw_centered_text(p, 590, f"COMPROVANTE PAGAMENTO - COMPETÊNCIA: {funcionario.comp}", fontsize=12, fontstyle="bold")
+    draw_centered_text(p, 565, f"FOLHA/RCT", fontsize=12, fontstyle="bold")
+
+    p.setFont("Helvetica-Bold", 10)
+    p.drawString(rect_x + 10, 525, f"Dados Consultados")
+    p.drawString(rect_x + 10, 416, f"Autenticação")
+    p.drawString(rect_x + 80, 416, f"Data")
+    p.drawString(rect_x + 120, 416, f"Banco")
+    p.drawString(rect_x + 160, 416, f"Agência")
+    p.drawString(rect_x + 200, 416, f"Conta")
+    p.drawString(rect_x + 240, 416, f"Valor R$")
+
+
+    p.setFont("Helvetica", 8)
+    p.drawString(rect_x + 10, 500, f"Agência:")
+    p.drawString(rect_x + 10, 485, f"Conta:")
+    p.drawString(rect_x + 10, 470, f"Descrição Lote:")
+    p.drawString(rect_x + 10, 455, f"Situação Lote:")
+    p.drawString(rect_x + 10, 440, f"Favorecidos:")
+    p.drawString(rect_x + 10 + 80, 500, f"1195-9 (BANCO DO BRASIL) OU 3380-4 (BRADESCO)")
+    p.drawString(rect_x + 10 + 80, 485, f"106742-7 (BANCO DO BRASIL) OU 15801-1 (BRADESCO)")
+    p.drawString(rect_x + 10 + 80, 470, f"PAG DIVERS DOC – CREDITO CONTA SALÁRIO")
+    p.drawString(rect_x + 10 + 80, 455, f"PROCESSADO - EFETUADO")
+    p.drawString(rect_x + 10 + 80, 440, f"{funcionario.matricula} - {funcionario.nome}")
+
+
+
+
+
+
 
 
 
