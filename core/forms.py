@@ -7,7 +7,7 @@ class SelecionarFuncionarioForm(forms.Form):
 
     class Meta:
         model = Funcionario
-        fields = ['matricula', 'comp']
+        fields = ['codigo_fc', 'comp']
 
 
     matricula = forms.IntegerField()

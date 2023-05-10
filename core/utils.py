@@ -16,7 +16,7 @@ def importar_excel(arquivo):
 
     for row in sheet.iter_rows(min_row=2, values_only=True):
         Funcionario.objects.create(
-            matricula=row[0],
+            codigo_fc=row[0],
             nome=row[1],
             cargo=row[2],
             comp=row[3],
@@ -181,7 +181,7 @@ def gerar_pdf(funcionario):
         ['ADICIONAL NOTURNO', ' ', f"{funcionario.hs_not}", ' '],
         ['D.S.R. S/ADICIONAL', ' ', ' ', ' '],
         ['ADICIONAL DE FUNÇÃO 25%', ' ', ' ', ' '],
-        ['ACIDENTE DE TRABALHO FGTS', ' ', f"{funcionario.acidente_trabalho_fgts}", ' '],
+        ['SALARIO FAMILIA', ' ', f" ", ' '],
         ['FALTA ABONADA-PONTO ELETR.', ' ', f"{funcionario.falta_abonada_ponto_eletr}", ' '],
         ['LICENÇA GESTANTE (LEI 14.151)', ' ', f"{funcionario.licenca_remunerada_gestante}", ' '],
         ['ATESTADO HORISTAS', ' ', f"{funcionario.atestado_horistas}", ' '],

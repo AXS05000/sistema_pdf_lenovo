@@ -21,7 +21,7 @@ def selecionar_funcionario(request):
     if request.method == 'POST':
         form = SelecionarFuncionarioForm(request.POST)
         if form.is_valid():
-            matricula = form.cleaned_data['matricula']
+            matricula = form.cleaned_data['codigo_fc']
             comp = form.cleaned_data['comp']
             try:
                 funcionario = Funcionario.objects.get(matricula=matricula, comp=comp)
