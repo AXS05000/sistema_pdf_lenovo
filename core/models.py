@@ -89,4 +89,4 @@ class Funcionario(models.Model):
         ordering = ['comp', 'codigo_fc']
 
     def __str__(self):
-        return f'{self.comp} - {self.matricula} - {self.nome}'
+        return f'{self.comp} - {self.codigo_fc} - {self.nome}'

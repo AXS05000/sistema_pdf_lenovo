@@ -10,5 +10,5 @@ class SelecionarFuncionarioForm(forms.Form):
         fields = ['codigo_fc', 'comp']
 
 
-    matricula = forms.IntegerField()
+    codigo_fc = forms.IntegerField()
     comp = forms.IntegerField()

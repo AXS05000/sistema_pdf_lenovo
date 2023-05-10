@@ -136,7 +136,7 @@ def gerar_pdf(funcionario):
 
 
     # Configurar o título do arquivo PDF
-    p.setTitle(f"{funcionario.comp} - {funcionario.matricula} - {funcionario.nome}.pdf")
+    p.setTitle(f"{funcionario.comp} - {funcionario.codigo_fc} - {funcionario.nome}.pdf")
 
 
     logo_path, logo_width, logo_height = get_image('static/images/go2b3.jpg', 138)
@@ -145,11 +145,11 @@ def gerar_pdf(funcionario):
     draw_centered_text(p, 750, f"EXTRATO SIMPLES - POR COLABORADOR – FATO GERADOR", fontsize=10, fontstyle="bold")
     draw_centered_text(p, 725, f"CTO: 21-2021", fontsize=10, fontstyle="bold")
     draw_centered_text(p, 700, f"COMPETÊNCIA: {funcionario.comp}", fontsize=10, fontstyle="bold")
-    draw_centered_text(p, 650, f"Matrícula: {funcionario.matricula}")
+    draw_centered_text(p, 650, f"Matrícula: {funcionario.codigo_fc}")
     draw_centered_text(p, 625, f"Nome: {funcionario.nome}")
     draw_centered_text(p, 600, f"Cargo: {funcionario.cargo}")
     draw_centered_text(p, 575, f"Admissão: {funcionario.adm}")
-    draw_centered_text(p, 550, f"Demissão: {funcionario.dem}")
+    draw_centered_text(p, 550, f"Demissão: {funcionario.dem_compt}")
     draw_centered_text(p, 525, f"CPF: {funcionario.cpf}")
     draw_centered_text(p, 500, f"Cliente: {funcionario.cliente}")
 
@@ -199,7 +199,7 @@ def gerar_pdf(funcionario):
     p.drawString(rect_xx + 10 + 80, 235, f"106742-7 (BANCO DO BRASIL) OU 15801-1 (BRADESCO)")
     p.drawString(rect_xx + 10 + 80, 220, f"PAG DIVERS DOC – CREDITO CONTA SALÁRIO")
     p.drawString(rect_xx + 10 + 80, 205, f"PROCESSADO - EFETUADO")
-    p.drawString(rect_xx + 10 + 80, 190, f"{funcionario.matricula} - {funcionario.nome}")
+    p.drawString(rect_xx + 10 + 80, 190, f"{funcionario.codigo_fc} - {funcionario.nome}")
     p.drawString(rect_xx + 10, 150, f"G331081341857981023 08.02.2022 13.50.39_")
     p.drawString(rect_xx + 200, 150, f"07.02.2022")
     p.drawString(rect_xx + 475, 150, f"R$ 858.00")
@@ -236,7 +236,7 @@ def gerar_pdf(funcionario):
     p.roundRect(rect_x, rect_y + 750, table_width, rect_height, 1, stroke=1, fill=0)
     p.setFont("Helvetica", 8)
     p.drawString(rect_x + 10, rect_y + 750 + 48, f"Código:")
-    p.drawString(rect_x + 10, rect_y + 750 + 35, f"{funcionario.matricula}")
+    p.drawString(rect_x + 10, rect_y + 750 + 35, f"{funcionario.codigo_fc}")
     p.drawString(rect_x + 50, rect_y + 750 + 48, f"Nome do Funcionário:")
     p.drawString(rect_x + 50, rect_y + 750 + 35, f"{funcionario.nome}")
     p.drawString(rect_x + 210, rect_y + 750 + 48, f"Função:")
@@ -244,7 +244,7 @@ def gerar_pdf(funcionario):
     p.drawString(rect_x + 345, rect_y + 750 + 48, f"Admissão:")
     p.drawString(rect_x + 345, rect_y + 750 + 35, f"{funcionario.adm}")
     p.drawString(rect_x + 400, rect_y + 750 + 48, f"Demissão:")
-    p.drawString(rect_x + 400, rect_y + 750 + 35, f"{funcionario.dem}")
+    p.drawString(rect_x + 400, rect_y + 750 + 35, f"{funcionario.dem_compt}")
     p.drawString(rect_x + 480, rect_y + 750 + 48, f"Competência:")
     p.drawString(rect_x + 480, rect_y + 750 + 35, f"{funcionario.comp}")
 
@@ -418,5 +418,5 @@ def gerar_pdf(funcionario):
     p.save()
 
     buffer.seek(0)
-    return FileResponse(buffer, as_attachment=True, filename=f'{funcionario.comp} - {funcionario.matricula} - {funcionario.nome}.pdf')
+    return FileResponse(buffer, as_attachment=True, filename=f'{funcionario.comp} - {funcionario.codigo_fc} - {funcionario.nome}.pdf')
 
