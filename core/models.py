@@ -86,7 +86,7 @@ class Funcionario(models.Model):
     liquido = models.CharField('LIQUIDO', max_length=100)
 
     class Meta:
-        ordering = ['comp', 'matricula']
+        ordering = ['comp', 'codigo_fc']
 
     def __str__(self):
         return f'{self.comp} - {self.matricula} - {self.nome}'

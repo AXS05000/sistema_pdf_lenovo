@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'projeto_pdf.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'teste',
+        'NAME': 'go2b_pdf',
         'USER': 'sa',
         'PASSWORD': '2241',
         'HOST': 'localhost',
