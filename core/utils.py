@@ -15,12 +15,11 @@ def importar_excel(arquivo):
     sheet = workbook.active
 
     for row in sheet.iter_rows(min_row=2, values_only=True):
-        matricula, nome, cargo, comp = row
         Funcionario.objects.create(
-            matricula=matricula,
-            nome=nome,
-            cargo=cargo,
-            comp=comp,
+            matricula=row[0],
+            nome=row[1],
+            cargo=row[2],
+            comp=row[3],
         )
 
 
@@ -69,11 +68,11 @@ def gerar_pdf(funcionario):
     draw_centered_text(p, 650, f"Matrícula: {funcionario.matricula}")
     draw_centered_text(p, 625, f"Nome: {funcionario.nome}")
     draw_centered_text(p, 600, f"Cargo: {funcionario.cargo}")
-    draw_centered_text(p, 575, f"Admissão: 20.11.2021")
-    draw_centered_text(p, 550, f"Demissão: __.__.____")
-    draw_centered_text(p, 525, f"CPF: 505.695.238-93")
-    draw_centered_text(p, 500, f"Local: TECA GUARULHOS")
-    draw_centered_text(p, 475, f"Turno: SPM TECA GUARULHOS- TURNO 03")
+    draw_centered_text(p, 575, f"Admissão: {funcionario.adm}")
+    draw_centered_text(p, 550, f"Demissão: {funcionario.dem}")
+    draw_centered_text(p, 525, f"CPF: {funcionario.cpf}")
+    draw_centered_text(p, 500, f"Cliente: {funcionario.cliente}")
+
 
     draw_centered_text(p, 425, f"IDENTIFICAÇÃO COMPROVANTE/EVIDÊNCIAS:", fontsize=10, fontstyle="bold")
     draw_centered_text(p, 400, f"• AUSÊNCIAS LEGAIS/FÉRIAS/DECIMO TERC./VERBAS RESCISÓRIAS/SAL.MATERN: VIDE AUTENTICAÇÕES E RECIBO.", fontsize=10, fontstyle="bold")
@@ -163,63 +162,60 @@ def gerar_pdf(funcionario):
     p.drawString(rect_x + 210, rect_y + 750 + 48, f"Função:")
     p.drawString(rect_x + 210, rect_y + 750 + 35, f"{funcionario.cargo}")
     p.drawString(rect_x + 345, rect_y + 750 + 48, f"Admissão:")
-    p.drawString(rect_x + 345, rect_y + 750 + 35, f"20.11.2021")
+    p.drawString(rect_x + 345, rect_y + 750 + 35, f"{funcionario.adm}")
     p.drawString(rect_x + 400, rect_y + 750 + 48, f"Demissão:")
-    p.drawString(rect_x + 400, rect_y + 750 + 35, f" __.__.____ ")
+    p.drawString(rect_x + 400, rect_y + 750 + 35, f"{funcionario.dem}")
     p.drawString(rect_x + 480, rect_y + 750 + 48, f"Competência:")
     p.drawString(rect_x + 480, rect_y + 750 + 35, f"{funcionario.comp}")
 
 
     data = [
         ['Cód. Descrição', 'Referência', 'Vencimentos', 'Descontos'],
-        ['HORAS NORMAIS', '145.67', '821.58', ' '],
-        ['D.S.R. S/HORAS NORMAL', ' ', '60.72', ' '],
-        ['HORA EXTRA 100% / HORA EXTRA 100% NOT', '0.00', '0.00 ', ' '],
-        ['D.S.R. S/HORA EXTRA 100%', '0.00', '0.00 ', ' '],
-        ['HORA EXTRA 50% / HORA EXTRA 50% NOT', '0.00', '0.00 ', ' '],
-        ['D.S.R. S/HORA EXTRA 50%', '0.00', '0.00 ', ' '],
-        ['ADIC. PERICULOSIDADE', '0.00', '0.00 ', ' '],
-        ['ADICIONAL NOTURNO', '0.00', '0.00 ', ' '],
-        ['D.S.R. S/ADICIONAL', '0.00', '0.00 ', ' '],
-        ['ADICIONAL DE FUNÇÃO 25%', '0.00', '0.00 ', ' '],
-        ['SALARIO FAMILIA', '0.00', '0.00 ', ' '],
-        ['FALTA ABONADA-PONTO ELETR.', '0.00', '0.00 ', ' '],
-        ['LICENÇA GESTANTE (LEI 14.151)', '0.00', '0.00 ', ' '],
-        ['ATESTADO HORISTAS', '0.00', '0.00 ', ' '],
-        ['SAL. MATERNIDADE', '0.00', '0.00 ', ' '],
-        ['AUX. DOENÇA / ACID. TRABALHO (15 DIAS)', '0.00', '0.00 ', ' '],
-        ['VERBAS RESCISÓRIAS (Art 7º CF)', '0.00', '0.00 ', ' '],
-        ['FERIAS', '0.00', '0.00 ', ' '],
-        ['1/3 FERIAS', '0.00', '0.00 ', ' '],
-        ['13º SALARIO INDENIZADO E ADICIONAIS', '0.00', '0.00 ', ' '],
-        ['ARREDONDAMENTO', '0.00', '0.00 ', ' '],
-        ['REEMBOLSO EXAME MEDICO/EPI/UNIF', '0.00', '0.00 ', ' '],
-        ['DIF. VR / VA  - DIF. VALE TRANSPORTE', '0.00', '0.00 ', ' '],
-        ['SALDO NEGATIVO', '0.00', '0.00 ', ' '],
-        ['DESC. FALTAS (DIAS+ATRASOS) E HORAS IND.', '0.00', '0.00 ', ' '],
-        ['DESC. D.S.R. S/FALTAS (DIAS)', '0.00', '0.00 ', ' '],
-        ['FALTAS ABONADAS', '0.00', '0.00 ', ' '],
-        ['DESC. ARREDONDAMENTO', '0.00', '0.00 ', ' '],
-        ['DESC. AVISO', '0.00', '0.00 ', ' '],
-        ['DESC. I.N.S.S./DESC. I.R.R.F', '0.00', '0.00 ', ' '],
-        ['DESC. I.N.S.S. S/13º SALARIO – INSS (Férias)', '0.00', '0.00 ', ' '],
-        ['SEGURO VIDA', '0.00', '0.00 ', ' '],
-        ['DESC. ASSIST. ODONTOLOGICA', '0.00', '0.00 ', ' '],
-        ['DESC. VALE REFEICAO NAO UTILIZADO', '0.00', '0.00 ', ' '],
-        ['DESC. VR / VA', '0.00', '0.00 ', ' '],
-        ['DESC UNIFORME / EPI', '0.00', '0.00 ', ' '],
-        ['DESC. VALE-TRANSPORTE NAO UTILIZADO', '0.00', '0.00 ', ' '],
-        ['DESC. VALE-TRANSPORTE', '0.00', '0.00 ', ' '],
-        ['DESC. SALDO NEGATIVO', '0.00', '0.00 ', ' '],
+        ['HORAS NORMAIS', ' ', f"{funcionario.hs_normais}", ' '],
+        ['D.S.R. S/HORAS NORMAL', ' ', ' ', ' '],
+        ['HORA EXTRA 100% / HORA EXTRA 100% NOT', ' ', f"{funcionario.he_100} / {funcionario.he_100_not}", ' '],
+        ['D.S.R. S/HORA EXTRA 100%', ' ', ' ', ' '],
+        ['HORA EXTRA 50% / HORA EXTRA 50% NOT', ' ', f"{funcionario.he_50} / {funcionario.he_50_not}", ' '],
+        ['D.S.R. S/HORA EXTRA 50%', ' ', ' ', ' '],
+        ['ADIC. PERICULOSIDADE', ' ', ' ', ' '],
+        ['ADICIONAL NOTURNO', ' ', f"{funcionario.hs_not}", ' '],
+        ['D.S.R. S/ADICIONAL', ' ', ' ', ' '],
+        ['ADICIONAL DE FUNÇÃO 25%', ' ', ' ', ' '],
+        ['ACIDENTE DE TRABALHO FGTS', ' ', f"{funcionario.acidente_trabalho_fgts}", ' '],
+        ['FALTA ABONADA-PONTO ELETR.', ' ', f"{funcionario.falta_abonada_ponto_eletr}", ' '],
+        ['LICENÇA GESTANTE (LEI 14.151)', ' ', f"{funcionario.licenca_remunerada_gestante}", ' '],
+        ['ATESTADO HORISTAS', ' ', f"{funcionario.atestado_horistas}", ' '],
+        ['SAL. MATERNIDADE', ' ', f"{funcionario.salario_maternidade}", ' '],
+        ['AUX. DOENÇA / ACID. TRABALHO (15 DIAS)', ' ', f"{funcionario.aux_doenca_15_dias} / {funcionario.acidente_trabalho_15_dias}", ' '],
+        ['VERBAS RESCISÓRIAS (Art 7º CF)', ' ', f"{funcionario.verbas_rescisorias}", ' '],
+        ['FERIAS', ' ', f"{funcionario.ferias}", ' '],
+        ['1/3 FERIAS', ' ', f"{funcionario.um_terco_ferias}", ' '],
+        ['13º SALARIO INDENIZADO E ADICIONAIS', ' ', f"{funcionario.decimo_terceiro_salario_indenizado}", ' '],
+        ['ARREDONDAMENTO', ' ', ' ', ' '],
+        ['REEMBOLSO EXAME MEDICO/EPI/UNIF', ' ', ' ', ' '],
+        ['DIF. VR / VA  - DIF. VALE TRANSPORTE', ' ', ' ', ' '],
+        ['SALDO NEGATIVO', ' ', ' ', ' '],
+        ['DESC. FALTAS (DIAS+ATRASOS) E HORAS IND.', ' ', ' ', ' '],
+        ['DESC. D.S.R. S/FALTAS (DIAS)', ' ', ' ', ' '],
+        ['FALTAS ABONADAS', ' ', ' ', ' '],
+        ['DESC. ARREDONDAMENTO', ' ', ' ', ' '],
+        ['DESC. AVISO', ' ', f" ", ' '],
+        ['DESC. I.N.S.S./DESC. I.R.R.F', ' ', ' ', ' '],
+        ['DESC. I.N.S.S. S/13º SALARIO – INSS (Férias)', ' ', ' ', ' '],
+        ['SEGURO VIDA', ' ', ' ', ' '],
+        ['DESC. ASSIST. ODONTOLOGICA', ' ', ' ', ' '],
+        ['DESC. VALE REFEICAO NAO UTILIZADO', ' ', ' ', ' '],
+        ['DESC. VR / VA', ' ', ' ', ' '],
+        ['DESC UNIFORME / EPI', ' ', ' ', ' '],
+        ['DESC. VALE-TRANSPORTE NAO UTILIZADO', ' ', ' ', ' '],
+        ['DESC. VALE-TRANSPORTE', ' ', ' ', ' '],
+        ['DESC. SALDO NEGATIVO', ' ', ' ', ' '],
         [' ', ' ', ' ', ' '],
         [' ', ' ', ' ', ' '],
         [' ', ' ', ' ', ' '],
         [' ', ' ', ' ', ' '],
         [' ', ' ', ' ', ' '],
         [' ', ' ', ' ', ' '],
-
-
-
     ]
 
 
@@ -312,10 +308,10 @@ def gerar_pdf(funcionario):
 
 ########################################################################################################
     p.drawString(rect_x + 300 + 10, rect_y + 750 + 70, f"Total Vencimentos:")
-    p.drawString(rect_x + 300 + 20, rect_y + 750 + 55, f"R$ 1.111.18")
+    p.drawString(rect_x + 300 + 20, rect_y + 750 + 55, f"R$ {funcionario.vencimentos}")
     p.drawString(rect_x + 445 + 10, rect_y + 750 + 70, f"Total Descontos:")
-    p.drawString(rect_x + 445 + 20, rect_y + 750 + 55, f"R$ 253.18")
-    p.drawString(rect_x + 350, rect_y + 750 + 20, f"Valor Líquido ==== R$ 858.00")
+    p.drawString(rect_x + 445 + 20, rect_y + 750 + 55, f"R$ {funcionario.descontos}")
+    p.drawString(rect_x + 350, rect_y + 750 + 20, f"Valor Líquido ==== R$ {funcionario.liquido}")
     p.drawString(rect_x + 25, rect_y + 750 + 22, f"__________________________________")
     p.drawString(rect_x + 25, rect_y + 750 + 10, f"Declaro ter recebido a importância líquida discriminada neste recibo")
 
