@@ -97,7 +97,17 @@ def importar_excel(arquivo):
             desc_vr_va=row[78],
             desc_vale_refeicao_nao_utilizado=row[79],
             descontos=row[80],
-            liquido=row[81]
+            liquido=row[81],
+            liquido_1=row[82],
+            aut_1=row[83],
+            liquido_2=row[84],
+            aut_2=row[85],
+            liquido_3=row[86],
+            aut_3=row[87],
+            liquido_4=row[88],
+            aut_4=row[89],
+            liquido_5=row[90],
+            aut_5=row[91],
         )
 
         
