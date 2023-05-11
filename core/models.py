@@ -6,7 +6,7 @@ class Funcionario(models.Model):
     cod_cliente = models.CharField('COD CLIENTE', max_length=100)
     cliente = models.CharField('CLIENTE', max_length=100)
     codigo = models.CharField('CODIGO', max_length=100)
-    codigo_fc = models.IntegerField('CODIGO FC', unique=True)
+    codigo_fc = models.IntegerField('CODIGO FC', unique=False)
     cpf = models.CharField('CPF', max_length=100)
     nome = models.CharField('Nome', max_length=100)
     cargo = models.CharField('Cargo', max_length=100)
