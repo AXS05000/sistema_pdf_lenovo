@@ -84,6 +84,16 @@ class Funcionario(models.Model):
     desc_vale_refeicao_nao_utilizado = models.CharField('DESC. VALE REFEICAO NAO UTILIZADO', max_length=100)
     descontos = models.CharField('DESCONTOS', max_length=100)
     liquido = models.CharField('LIQUIDO', max_length=100)
+    liquido_1 = models.CharField('LIQUIDO 1', max_length=100)
+    aut_1 = models.CharField('AUT 1', max_length=100)
+    liquido_2 = models.CharField('LIQUIDO 2', max_length=100)
+    aut_2 = models.CharField('AUT 2', max_length=100)
+    liquido_3 = models.CharField('LIQUIDO 3', max_length=100)
+    aut_3 = models.CharField('AUT 3', max_length=100)
+    liquido_4 = models.CharField('LIQUIDO 4', max_length=100)
+    aut_4 = models.CharField('AUT 4', max_length=100)
+    liquido_5 = models.CharField('LIQUIDO 5', max_length=100)
+    aut_5 = models.CharField('AUT 5', max_length=100)
 
     class Meta:
         ordering = ['comp', 'codigo_fc']

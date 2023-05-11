@@ -171,10 +171,22 @@ def gerar_pdf(funcionario):
     p.drawString(rect_xx, 181, f"_________________________________________________________________________________________________")
     
     
-
+    p.setFont("Helvetica", 7)
     p.drawString(rect_xx + 275, 150, f"-------")
     p.drawString(rect_xx + 325, 150, f"-------")
     p.drawString(rect_xx + 400, 150, f"-------")
+    p.drawString(rect_xx + 275, 135, f"-------")
+    p.drawString(rect_xx + 325, 135, f"-------")
+    p.drawString(rect_xx + 400, 135, f"-------")
+    p.drawString(rect_xx + 275, 120, f"-------")
+    p.drawString(rect_xx + 325, 120, f"-------")
+    p.drawString(rect_xx + 400, 120, f"-------")
+    p.drawString(rect_xx + 275, 105, f"-------")
+    p.drawString(rect_xx + 325, 105, f"-------")
+    p.drawString(rect_xx + 400, 105, f"-------")
+    p.drawString(rect_xx + 275, 90, f"-------")
+    p.drawString(rect_xx + 325, 90, f"-------")
+    p.drawString(rect_xx + 400, 90, f"-------")
 
     draw_centered_text(p, 325, f"COMPROVANTE PAGAMENTO - COMPETÊNCIA: {funcionario.comp}", fontsize=12, fontstyle="bold")
     draw_centered_text(p, 300, f"FOLHA/RCT", fontsize=12, fontstyle="bold")
@@ -199,10 +211,26 @@ def gerar_pdf(funcionario):
     p.drawString(rect_xx + 10 + 80, 235, f"106742-7 (BANCO DO BRASIL) OU 15801-1 (BRADESCO)")
     p.drawString(rect_xx + 10 + 80, 220, f"PAG DIVERS DOC – CREDITO CONTA SALÁRIO")
     p.drawString(rect_xx + 10 + 80, 205, f"PROCESSADO - EFETUADO")
+
+
+    p.setFont("Helvetica", 7)
     p.drawString(rect_xx + 10 + 80, 190, f"{funcionario.codigo_fc} - {funcionario.nome}")
-    p.drawString(rect_xx + 10, 150, f"G331081341857981023 08.02.2022 13.50.39_")
-    p.drawString(rect_xx + 200, 150, f"07.02.2022")
-    p.drawString(rect_xx + 475, 150, f"R$ 858.00")
+    p.drawString(rect_xx + 10, 150, f"{funcionario.aut_1}")
+    p.drawString(rect_xx + 200, 150, f"-------")
+    p.drawString(rect_xx + 475, 150, f"{funcionario.liquido_1}")
+    p.drawString(rect_xx + 10, 135, f"{funcionario.aut_2}")
+    p.drawString(rect_xx + 200, 135, f"-------")
+    p.drawString(rect_xx + 475, 135, f"{funcionario.liquido_2}")
+    p.drawString(rect_xx + 10, 120, f"{funcionario.aut_3}")
+    p.drawString(rect_xx + 200, 120, f"-------")
+    p.drawString(rect_xx + 475, 120, f"{funcionario.liquido_3}")
+    p.drawString(rect_xx + 10, 105, f"{funcionario.aut_4}")
+    p.drawString(rect_xx + 200, 105, f"-------")
+    p.drawString(rect_xx + 475, 105, f"{funcionario.liquido_4}")
+    p.drawString(rect_xx + 10, 90, f"{funcionario.aut_5}")
+    p.drawString(rect_xx + 200, 90, f"-------")
+    p.drawString(rect_xx + 475, 90, f"{funcionario.liquido_5}")
+
 
 
 
