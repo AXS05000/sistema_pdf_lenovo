@@ -7,6 +7,7 @@ from . import views
 from .forms import SelecionarFuncionarioForm
 from .models import Funcionario
 from .utils import gerar_pdf, importar_excel
+from .utils2 import gerar_pdf2
 
 
 @login_required(login_url='/login/')
@@ -35,6 +36,25 @@ def selecionar_funcionario(request):
         form = SelecionarFuncionarioForm()
 
     return render(request, 'pdf/selecionar_funcionario.html', {'form': form})
+
+
+@login_required(login_url='/login/')
+def selecionar_funcionario2(request):
+    if request.method == 'POST':
+        form = SelecionarFuncionarioForm(request.POST)
+        if form.is_valid():
+            codigo_fc = form.cleaned_data['codigo_fc']
+            comp = form.cleaned_data['comp']
+            try:
+                funcionario = Funcionario.objects.get(codigo_fc=codigo_fc, comp=comp)
+            
+                return gerar_pdf2(funcionario)
+            except Funcionario.DoesNotExist:
+                form.add_error(None, 'Funcionário não encontrado para a matrícula e competência informadas.')
+    else:
+        form = SelecionarFuncionarioForm()
+
+    return render(request, 'pdf/selecionar_funcionario2.html', {'form': form})
 
 
 def gerar_pdf_direto(request, codigo_fc, comp):
