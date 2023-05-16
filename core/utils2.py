@@ -1,10 +1,11 @@
 
 import io
+from datetime import date, timedelta
 
 import openpyxl
 from django.http import FileResponse
 from reportlab.lib import colors, utils
-from reportlab.lib.pagesizes import letter
+from reportlab.lib.pagesizes import landscape, letter
 from reportlab.pdfgen import canvas
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 
@@ -350,35 +351,186 @@ def gerar_pdf2(funcionario):
 
     p.setFont("Helvetica", 10)
     p.drawString(rect_xx, 803, f"_________________________________________________________________________________________________")
-    p.drawString(rect_xx, 181, f"_________________________________________________________________________________________________")
+    p.drawString(rect_xx, 728, f"_________________________________________________________________________________________________")
+    p.drawString(rect_xx, 702, f"_________________________________________________________________________________________________")
+    p.drawString(rect_xx, 542, f"_________________________________________________________________________________________________")
+    p.drawString(rect_xx, 382, f"_________________________________________________________________________________________________")
     
-    
-    p.setFont("Helvetica", 7)
-    p.drawString(rect_xx + 275, 150, f"-------")
-    p.drawString(rect_xx + 325, 150, f"-------")
-    p.drawString(rect_xx + 400, 150, f"-------")
-    p.drawString(rect_xx + 275, 135, f"-------")
-    p.drawString(rect_xx + 325, 135, f"-------")
-    p.drawString(rect_xx + 400, 135, f"-------")
-    p.drawString(rect_xx + 275, 120, f"-------")
-    p.drawString(rect_xx + 325, 120, f"-------")
-    p.drawString(rect_xx + 400, 120, f"-------")
-    p.drawString(rect_xx + 275, 105, f"-------")
-    p.drawString(rect_xx + 325, 105, f"-------")
-    p.drawString(rect_xx + 400, 105, f"-------")
-    p.drawString(rect_xx + 275, 90, f"-------")
-    p.drawString(rect_xx + 325, 90, f"-------")
-    p.drawString(rect_xx + 400, 90, f"-------")
+    p.setFont("Helvetica-Bold", 13)
+    p.drawString(rect_xx + 10, 705, f"Vale Transporte")
+    p.drawString(rect_xx + 10, 545, f"Vale Refeição")
+    p.drawString(rect_xx + 10, 385, f"Cesta")
 
-    p.setFont("Helvetica-Bold", 10)
-    p.drawString(rect_xx + 10, 805, f"Dados Consultados")
-    p.drawString(rect_xx + 10, 166, f"Autenticação")
-    p.drawString(rect_xx + 200, 166, f"Data")
-    p.drawString(rect_xx + 275, 166, f"Banco")
-    p.drawString(rect_xx + 325, 166, f"Agência")
-    p.drawString(rect_xx + 400, 166, f"Conta")
-    p.drawString(rect_xx + 475, 166, f"Valor R$")
+    p.setFont("Helvetica-Bold", 9)
+    p.drawString(rect_xx + 10, 688, f"Data Inicio")
+    p.drawString(rect_xx + 85, 688, f"Data Fim")
+    p.drawString(rect_xx + 150, 688, f"Quantidade")
+    p.drawString(rect_xx + 225, 688, f"Data de Pagamento")
+    p.drawString(rect_xx + 325, 688, f"Valor R$")
+    p.drawString(rect_xx + 410, 688, f"Autenticação")
+    p.drawString(rect_xx + 10, 528, f"Data Inicio")
+    p.drawString(rect_xx + 85, 528, f"Data Fim")
+    p.drawString(rect_xx + 150, 528, f"Quantidade")
+    p.drawString(rect_xx + 225, 528, f"Data de Pagamento")
+    p.drawString(rect_xx + 325, 528, f"Valor R$")
+    p.drawString(rect_xx + 410, 528, f"Autenticação")
+    p.drawString(rect_xx + 10, 368, f"Data Inicio")
+    p.drawString(rect_xx + 85, 368, f"Data Fim")
+    p.drawString(rect_xx + 150, 368, f"Quantidade")
+    p.drawString(rect_xx + 225, 368, f"Data de Pagamento")
+    p.drawString(rect_xx + 325, 368, f"Valor R$")
+    p.drawString(rect_xx + 410, 368, f"Autenticação")
 
+    p.setFont("Helvetica", 8)
+    p.drawString(rect_xx + 10, 673, f"01/01/2020")
+    p.drawString(rect_xx + 85, 673, f"31/01/2020")
+    p.drawString(rect_xx + 150, 673, f"15")
+    p.drawString(rect_xx + 225, 673, f"16/03/2020")
+    p.drawString(rect_xx + 325, 673, f"R$ 1200,00")
+    p.drawString(rect_xx + 395, 673, f"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+    p.drawString(rect_xx + 10, 658, f"01/01/2020")
+    p.drawString(rect_xx + 85, 658, f"31/01/2020")
+    p.drawString(rect_xx + 150, 658, f"23")
+    p.drawString(rect_xx + 225, 658, f"16/03/2020")
+    p.drawString(rect_xx + 325, 658, f"R$ 300,00")
+    p.drawString(rect_xx + 395, 658, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 643, f"01/01/2020")
+    p.drawString(rect_xx + 85, 643, f"31/01/2020")
+    p.drawString(rect_xx + 150, 643, f"12")
+    p.drawString(rect_xx + 225, 643, f"16/03/2020")
+    p.drawString(rect_xx + 325, 643, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 643, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 628, f"01/01/2020")
+    p.drawString(rect_xx + 85, 628, f"31/01/2020")
+    p.drawString(rect_xx + 150, 628, f"12")
+    p.drawString(rect_xx + 225, 628, f"16/03/2020")
+    p.drawString(rect_xx + 325, 628, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 628, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 613, f"01/01/2020")
+    p.drawString(rect_xx + 85, 613, f"31/01/2020")
+    p.drawString(rect_xx + 150, 613, f"12")
+    p.drawString(rect_xx + 225, 613, f"16/03/2020")
+    p.drawString(rect_xx + 325, 613, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 613, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 598, f"01/01/2020")
+    p.drawString(rect_xx + 85, 598, f"31/01/2020")
+    p.drawString(rect_xx + 150, 598, f"12")
+    p.drawString(rect_xx + 225, 598, f"16/03/2020")
+    p.drawString(rect_xx + 325, 598, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 598, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 583, f"01/01/2020")
+    p.drawString(rect_xx + 85, 583, f"31/01/2020")
+    p.drawString(rect_xx + 150, 583, f"12")
+    p.drawString(rect_xx + 225, 583, f"16/03/2020")
+    p.drawString(rect_xx + 325, 583, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 583, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 568, f"01/01/2020")
+    p.drawString(rect_xx + 85, 568, f"31/01/2020")
+    p.drawString(rect_xx + 150, 568, f"12")
+    p.drawString(rect_xx + 225, 568, f"16/03/2020")
+    p.drawString(rect_xx + 325, 568, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 568, f"BCO:001-9615E3EE996BB3C6")
+
+
+    p.setFont("Helvetica", 8)
+    p.drawString(rect_xx + 10, 513, f"01/01/2020")
+    p.drawString(rect_xx + 85, 513, f"31/01/2020")
+    p.drawString(rect_xx + 150, 513, f"15")
+    p.drawString(rect_xx + 225, 513, f"16/03/2020")
+    p.drawString(rect_xx + 325, 513, f"R$ 1200,00")
+    p.drawString(rect_xx + 395, 513, f"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+    p.drawString(rect_xx + 10, 498, f"01/01/2020")
+    p.drawString(rect_xx + 85, 498, f"31/01/2020")
+    p.drawString(rect_xx + 150, 498, f"23")
+    p.drawString(rect_xx + 225, 498, f"16/03/2020")
+    p.drawString(rect_xx + 325, 498, f"R$ 300,00")
+    p.drawString(rect_xx + 395, 498, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 483, f"01/01/2020")
+    p.drawString(rect_xx + 85, 483, f"31/01/2020")
+    p.drawString(rect_xx + 150, 483, f"12")
+    p.drawString(rect_xx + 225, 483, f"16/03/2020")
+    p.drawString(rect_xx + 325, 483, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 483, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 468, f"01/01/2020")
+    p.drawString(rect_xx + 85, 468, f"31/01/2020")
+    p.drawString(rect_xx + 150, 468, f"12")
+    p.drawString(rect_xx + 225, 468, f"16/03/2020")
+    p.drawString(rect_xx + 325, 468, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 468, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 453, f"01/01/2020")
+    p.drawString(rect_xx + 85, 453, f"31/01/2020")
+    p.drawString(rect_xx + 150, 453, f"12")
+    p.drawString(rect_xx + 225, 453, f"16/03/2020")
+    p.drawString(rect_xx + 325, 453, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 453, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 438, f"01/01/2020")
+    p.drawString(rect_xx + 85, 438, f"31/01/2020")
+    p.drawString(rect_xx + 150, 438, f"12")
+    p.drawString(rect_xx + 225, 438, f"16/03/2020")
+    p.drawString(rect_xx + 325, 438, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 438, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 423, f"01/01/2020")
+    p.drawString(rect_xx + 85, 423, f"31/01/2020")
+    p.drawString(rect_xx + 150, 423, f"12")
+    p.drawString(rect_xx + 225, 423, f"16/03/2020")
+    p.drawString(rect_xx + 325, 423, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 423, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 408, f"01/01/2020")
+    p.drawString(rect_xx + 85, 408, f"31/01/2020")
+    p.drawString(rect_xx + 150, 408, f"12")
+    p.drawString(rect_xx + 225, 408, f"16/03/2020")
+    p.drawString(rect_xx + 325, 408, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 408, f"BCO:001-9615E3EE996BB3C6")
+
+    p.setFont("Helvetica", 8)
+    p.drawString(rect_xx + 10, 353, f"01/01/2020")
+    p.drawString(rect_xx + 85, 353, f"31/01/2020")
+    p.drawString(rect_xx + 150, 353, f"15")
+    p.drawString(rect_xx + 225, 353, f"16/03/2020")
+    p.drawString(rect_xx + 325, 353, f"R$ 1200,00")
+    p.drawString(rect_xx + 395, 353, f"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+    p.drawString(rect_xx + 10, 338, f"01/01/2020")
+    p.drawString(rect_xx + 85, 338, f"31/01/2020")
+    p.drawString(rect_xx + 150, 338, f"23")
+    p.drawString(rect_xx + 225, 338, f"16/03/2020")
+    p.drawString(rect_xx + 325, 338, f"R$ 300,00")
+    p.drawString(rect_xx + 395, 338, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 323, f"01/01/2020")
+    p.drawString(rect_xx + 85, 323, f"31/01/2020")
+    p.drawString(rect_xx + 150, 323, f"12")
+    p.drawString(rect_xx + 225, 323, f"16/03/2020")
+    p.drawString(rect_xx + 325, 323, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 323, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 308, f"01/01/2020")
+    p.drawString(rect_xx + 85, 308, f"31/01/2020")
+    p.drawString(rect_xx + 150, 308, f"12")
+    p.drawString(rect_xx + 225, 308, f"16/03/2020")
+    p.drawString(rect_xx + 325, 308, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 308, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 293, f"01/01/2020")
+    p.drawString(rect_xx + 85, 293, f"31/01/2020")
+    p.drawString(rect_xx + 150, 293, f"12")
+    p.drawString(rect_xx + 225, 293, f"16/03/2020")
+    p.drawString(rect_xx + 325, 293, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 293, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 278, f"01/01/2020")
+    p.drawString(rect_xx + 85, 278, f"31/01/2020")
+    p.drawString(rect_xx + 150, 278, f"12")
+    p.drawString(rect_xx + 225, 278, f"16/03/2020")
+    p.drawString(rect_xx + 325, 278, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 278, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 263, f"01/01/2020")
+    p.drawString(rect_xx + 85, 263, f"31/01/2020")
+    p.drawString(rect_xx + 150, 263, f"12")
+    p.drawString(rect_xx + 225, 263, f"16/03/2020")
+    p.drawString(rect_xx + 325, 263, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 263, f"BCO:001-9615E3EE996BB3C6")
+    p.drawString(rect_xx + 10, 248, f"01/01/2020")
+    p.drawString(rect_xx + 85, 248, f"31/01/2020")
+    p.drawString(rect_xx + 150, 248, f"12")
+    p.drawString(rect_xx + 225, 248, f"16/03/2020")
+    p.drawString(rect_xx + 325, 248, f"R$ 323,00")
+    p.drawString(rect_xx + 395, 248, f"BCO:001-9615E3EE996BB3C6")
 
     p.setFont("Helvetica", 8)
     p.drawString(rect_xx + 10, 790, f"Agência:")
@@ -392,23 +544,67 @@ def gerar_pdf2(funcionario):
     p.drawString(rect_xx + 10 + 80, 745, f"PROCESSADO - EFETUADO")
 
 
-    p.setFont("Helvetica", 7)
-    p.drawString(rect_xx + 10 + 80, 730, f"{funcionario.codigo_fc} - {funcionario.nome}")
-    p.drawString(rect_xx + 10, 150, f"{funcionario.aut_1}")
-    p.drawString(rect_xx + 200, 150, f"-------")
-    p.drawString(rect_xx + 475, 150, f"{funcionario.liquido_1}")
-    p.drawString(rect_xx + 10, 135, f"{funcionario.aut_2}")
-    p.drawString(rect_xx + 200, 135, f"-------")
-    p.drawString(rect_xx + 475, 135, f"{funcionario.liquido_2}")
-    p.drawString(rect_xx + 10, 120, f"{funcionario.aut_3}")
-    p.drawString(rect_xx + 200, 120, f"-------")
-    p.drawString(rect_xx + 475, 120, f"{funcionario.liquido_3}")
-    p.drawString(rect_xx + 10, 105, f"{funcionario.aut_4}")
-    p.drawString(rect_xx + 200, 105, f"-------")
-    p.drawString(rect_xx + 475, 105, f"{funcionario.liquido_4}")
-    p.drawString(rect_xx + 10, 90, f"{funcionario.aut_5}")
-    p.drawString(rect_xx + 200, 90, f"-------")
-    p.drawString(rect_xx + 475, 90, f"{funcionario.liquido_5}")
+    # Finalizar a terceira página e começa a 4°.
+    p.showPage()
+    draw_centered_text(p, 805, f"Folha De Ponto", fontsize=16, fontstyle="bold")
+
+
+
+    dados_dias = [
+        {"data": date(2023, 5, 1), "dia": "Segunda", "jornada": "12:00-13:00 14:00-15:00", "horas": "2:00", "horas_decimal": "2,00"},
+        {"data": date(2023, 5, 2), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 3), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 4), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 5), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 6), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 7), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 8), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 9), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 10), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 11), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 12), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 13), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 14), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 15), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 16), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 17), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 18), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 19), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 20), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 21), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 22), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 23), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 24), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 25), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 26), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 27), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 28), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 29), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 30), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+        {"data": date(2023, 5, 31), "dia": "Terça", "jornada": "12:00-13:00 14:00-15:00", "horas": "3:00", "horas_decimal": "3,00"},
+    ]
+
+    data = [["Data da marcação", "Dia", "Jornada Considerada", "Horas Trabalhadas", "Horas Trabalhadas em Decimal"]]
+    for dia in dados_dias:
+        data.append([dia["data"], dia["dia"], dia["jornada"], dia["horas"], dia["horas_decimal"]])
+
+
+    table = Table(data, colWidths=[None, None, 190, None, None])
+    table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), colors.white),
+        ('TEXTCOLOR', (0, 0), (-1, 0), colors.black),
+        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+        ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
+        ('FONTSIZE', (0, 1), (-1, -1), 8),
+        ('BOX', (0, 0), (-1, -1), 1, colors.black),
+        ('GRID', (0,0), (-1,-1), 1, colors.black),
+        ('BOTTOMPADDING', (0, 0), (-1, 0), 6),  #Espaçemnto da primeira linha.
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 0),
+        ('LINEABOVE', (0, 1), (-1, 1), 1, colors.black),  # Adicionado
+    ]))
+
+    table.wrapOn(p, letter[0], letter[1])
+    table.drawOn(p, 10, 310) 
 
 
 
@@ -417,6 +613,37 @@ def gerar_pdf2(funcionario):
 
 
 
+    dados_dias = [
+        {"total": "Total HS Trabalhadas:", "horas": "208,32"},
+        {"total": "Total HS Normal:", "horas": "102,32"},
+        {"total": "Total HS 50%:", "horas": "8,32"},
+        {"total": "Total HS 50% NOT:", "horas": "18,22"},
+        {"total": "Total HS 100%:", "horas": "9,76"},
+        {"total": "Total HS 100% NOT:", "horas": "34,21"},
+    
+    ]
+
+    data = [["Totais", "Horas"]]
+    for dia in dados_dias:
+        data.append([dia["total"], dia["horas"]])
+
+
+    table = Table(data, colWidths=[150, 100, 100])
+    table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), colors.white),
+        ('TEXTCOLOR', (0, 0), (-1, 0), colors.black),
+        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+        ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
+        ('FONTSIZE', (0, 1), (-1, -1), 8),
+        ('BOX', (0, 0), (-1, -1), 1, colors.black),
+        ('GRID', (0,0), (-1,-1), 1, colors.black),
+        ('BOTTOMPADDING', (0, 0), (-1, 0), 6),  #Espaçemnto da primeira linha.
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 0),
+        ('LINEABOVE', (0, 1), (-1, 1), 1, colors.black),  # Adicionado
+    ]))
+
+    table.wrapOn(p, letter[0], letter[1])
+    table.drawOn(p, 10, 150)
 
     p.save()
 
