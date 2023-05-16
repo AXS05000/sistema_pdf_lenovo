@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import redirect, render
 from django.urls import path
@@ -8,6 +9,7 @@ from .models import Funcionario
 from .utils import gerar_pdf, importar_excel
 
 
+@login_required(login_url='/login/')
 def upload_excel(request):
     if request.method == 'POST':
         arquivo = request.FILES['arquivo']
@@ -16,7 +18,7 @@ def upload_excel(request):
 
     return render(request, 'pdf/upload.html')
 
-
+@login_required(login_url='/login/')
 def selecionar_funcionario(request):
     if request.method == 'POST':
         form = SelecionarFuncionarioForm(request.POST)
