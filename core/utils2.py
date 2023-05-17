@@ -12,6 +12,19 @@ from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 from .models import Funcionario
 
 
+def importar_excel_beneficios(arquivo):
+    workbook = openpyxl.load_workbook(arquivo)
+    sheet = workbook.active
+
+    for row in sheet.iter_rows(min_row=2, values_only=True):
+        Funcionario.objects.update_or_create(
+            id=row[0],
+            defaults={
+                'comp': row[1],
+                'cod_cliente': row[1],
+            }
+        )
+
 def get_image(path, width):
     image = utils.ImageReader(path)
     aspect_ratio = float(image.getSize()[1]) / float(image.getSize()[0])
